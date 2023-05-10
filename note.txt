@@ -1,0 +1,34 @@
+1. Tên thư mục, file:
+  - Cách nhau bởi dấu "-".
+
+  VD: sign-in, text-style.ts
+
+2. Tên biến, tên function, các property trong Object:
+  - Dạng camelCase.
+  - Tên function sẽ kèm tiền tố "on"
+  - Tên function cho middleware (thunk) sẽ kèm tiền tố "onThunk"
+  - Tên function cho render sẽ kèm tiền tố "onRender"
+  - Tên function cho sự kiện "press" sẽ kèm hậu tố "Press"
+
+  VD 1: backgroundImage, { sessionState: '' }
+  VD 2: onGetExamples, onThunkGetExamples, onRenderItems
+  VD 3: onSignInBtnPress
+
+3. Tên class, function functional, enum:
+  - Dạng PascalCase
+  - Với tên class cho model sẽ kèm với hậu tố "Model"
+
+  VD 1: SignInContainer, ExampleModel, ExampleEnum
+
+4. Style:
+  - Phần chính: "container"
+  - <View /> => view____, VD: viewBtn
+  - <TouchableOpacity />, ... => btn____, VD: btnSignIn
+  - <Text /> => txt____, VD: txtBtnSign, txtTitle
+  - <Image />, <ImageBackground /> => img____, VD: imgLogo
+  - <TextInput /> => input____, VD: inputUsername
+  - Icon => icon____, VD: iconEye
+
+  Lưu ý:
+  - Tất cả các giá trị kích thước cần dùng hàm: pxToPercentage.
+  - Tất cả các text style cần set font size, ...textStyle.

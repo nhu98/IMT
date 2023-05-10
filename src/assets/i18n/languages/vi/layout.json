@@ -1,0 +1,11 @@
+{
+  "header": {
+    "home": "Trang chủ",
+    "setting": "Cài đặt",
+    "otpConfirmation": "Xác thực OTP"
+  },
+  "tabBarBottom": {
+    "home": "Trang chủ",
+    "settings": "Cài đặt"
+  }
+}

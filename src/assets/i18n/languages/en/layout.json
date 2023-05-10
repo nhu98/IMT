@@ -1,0 +1,11 @@
+{
+  "header": {
+    "home": "Home",
+    "setting": "Setting",
+    "otpConfirmation": "OTP Confirmation"
+  },
+  "tabBarBottom": {
+    "home": "Home",
+    "settings": "Settings"
+  }
+}
