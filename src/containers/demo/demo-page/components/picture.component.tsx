@@ -8,35 +8,17 @@ import {
 import { pxToPercentage } from '@src/core/libs/utils';
 import React, { useState } from 'react';
 import { RadioButtonIcon } from '@src/assets/icons';
-
-interface Detail {
-  imageUrl: string;
-  title: string;
-  description: string;
-  timeNumber: string;
-  detailId: string;
-}
-
-interface DateItem {
-  title: string;
-  details: Detail[];
-  dateId: string;
-}
-
-interface YearItem {
-  year: string;
-  date: DateItem[];
-  yearId: string;
-}
+import { textStyle } from '@src/components';
+import { YearItem } from '@src/core/models/demo/demo.model';
 
 interface Props {
   item: YearItem;
 }
 
 export const Picture = ({ item }: Props) => {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
-  const handleToggleItem = (itemId) => {
+  const handleToggleItem = (itemId: string) => {
     if (selectedItems.includes(itemId)) {
       setSelectedItems(selectedItems.filter((id) => id !== itemId));
     } else {
@@ -44,7 +26,6 @@ export const Picture = ({ item }: Props) => {
     }
   };
 
-  // @ts-ignore
   return (
     <View style={styles.container}>
       <View>
@@ -82,14 +63,7 @@ export const Picture = ({ item }: Props) => {
                     )}
                     {!selectedItems.includes(detail.detailId) &&
                       RadioButtonIcon({
-                        width: pxToPercentage(20),
-                        height: pxToPercentage(20),
-                        position: 'absolute',
-                        top: 8,
-                        right: 8,
-                        borderRadius: 999, // Use a large enough value to make it a circle
-                        justifyContent: 'center',
-                        alignItems: 'center',
+                        ...styles.radioButton,
                       })}
                   </TouchableOpacity>
                 </View>
@@ -111,12 +85,14 @@ const styles = StyleSheet.create({
     fontSize: pxToPercentage(16),
     fontWeight: '500',
     marginBottom: pxToPercentage(12),
+    ...textStyle.proTextSemibold,
   },
   monthText: {
     color: '#3C3775',
     fontSize: pxToPercentage(14),
     fontWeight: '500',
     marginBottom: pxToPercentage(8),
+    ...textStyle.proTextSemibold,
   },
   titleImage: {
     position: 'absolute',
@@ -125,20 +101,23 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: pxToPercentage(15),
     fontWeight: '500',
+    ...textStyle.proTextSemibold,
   },
   descriptionImage: {
     position: 'absolute',
     bottom: pxToPercentage(8),
     left: pxToPercentage(4),
     color: 'white',
-    fontSize: pxToPercentage(12),
+    fontSize: pxToPercentage(11),
+    ...textStyle.proTextSemibold,
   },
   numberImage: {
     position: 'absolute',
     bottom: pxToPercentage(8),
     right: pxToPercentage(4),
     color: 'white',
-    fontSize: pxToPercentage(12),
+    fontSize: pxToPercentage(11),
+    ...textStyle.proTextSemibold,
   },
   image: {
     width: pxToPercentage(164),
@@ -158,26 +137,36 @@ const styles = StyleSheet.create({
     marginBottom: pxToPercentage(12),
   },
   selectedImageContainer: {
-    borderWidth: 2,
+    borderWidth: pxToPercentage(2),
     borderColor: 'blue', // Customize the border color for selected items
   },
   selectedIconContainer: {
     position: 'absolute',
-    top: 8,
-    right: 8,
+    top: pxToPercentage(8),
+    right: pxToPercentage(8),
     backgroundColor: 'blue', // Customize the background color for selected items
     borderRadius: 999, // Use a large enough value to make it a circle
-    width: 20,
-    height: 20,
+    width: pxToPercentage(20),
+    height: pxToPercentage(20),
     justifyContent: 'center',
     alignItems: 'center',
   },
   imageWrapper: {
-    borderRadius: 12,
+    borderRadius: pxToPercentage(12),
     overflow: 'hidden',
   },
   imageContainer: {
-    borderRadius: 12,
+    borderRadius: pxToPercentage(12),
     overflow: 'hidden',
+  },
+  radioButton: {
+    width: pxToPercentage(20),
+    height: pxToPercentage(20),
+    position: 'absolute',
+    top: pxToPercentage(8),
+    right: pxToPercentage(8),
+    borderRadius: 999, // Use a large enough value to make it a circle
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
