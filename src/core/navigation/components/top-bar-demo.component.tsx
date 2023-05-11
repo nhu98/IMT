@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-navigation';
 import { pxToPercentage } from '@src/core/libs/utils';
 import { IconElement } from '@src/assets/icons/icon.component';
 import { themes } from '@src/core/themes';
+import { textStyle } from '@src/components';
 
 export interface ComponentProps {
   title?: string | undefined;
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     height: pxToPercentage(52),
     backgroundColor: themes['App Theme']['basic-light-color-1'],
     elevation: 5,
-    shadowColor: '#F5F5F5',
+    shadowColor: themes['App Theme']['shadow-grey-color-1'],
     shadowOpacity: 0.3,
     shadowRadius: 3,
     shadowOffset: { width: 0, height: 5 },
@@ -49,8 +50,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   txtTitle: {
-    fontSize: pxToPercentage(18), //fontFamily: 'Montserrat', //don't add font Montserrat
+    fontSize: pxToPercentage(18),
     fontWeight: '700',
-    color: '#3C3775',
+    color: themes['App Theme']['purple-color-1'],
+    ...textStyle.proTextSemibold,
   },
 });

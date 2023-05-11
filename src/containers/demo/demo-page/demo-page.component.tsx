@@ -7,19 +7,29 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import { demoDatasource } from '@src/core/data/demo';
 import { pxToPercentage } from '@src/core/libs/utils';
-import { Picture } from '@src/containers/demo/demo-page/picture.component';
+import { Picture } from '@src/containers/demo/demo-page/components/picture.component';
+import { textStyle } from '@src/components';
+import { YearItem } from '@src/core/models/demo/demo.model';
 
-export const Demo: React.FunctionComponent = () => {
+interface Props {
+  dataSource: YearItem[];
+  err: string;
+}
+
+export const Demo = ({ dataSource, err }: Props) => {
   // @ts-ignore
+  if (err) {
+    return <div>Error: {err}</div>;
+  }
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         style={styles.list}
-        data={demoDatasource}
+        data={dataSource}
         renderItem={({ item }) => <Picture item={item} />}
         keyExtractor={(item) => item.yearId}
+        extraData={dataSource}
       />
 
       <View style={styles.wrapButton}>
@@ -63,5 +73,6 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: pxToPercentage(14),
     fontWeight: '500',
+    ...textStyle.proTextSemibold,
   },
 });
