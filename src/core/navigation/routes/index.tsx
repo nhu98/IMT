@@ -18,6 +18,7 @@ import { AuthNavigator } from './auth';
 import { HomeNavigationMap, HomeNavigator } from './home';
 import { SettingsNavigationMap, SettingsNavigator } from './settings';
 import I18n from '@src/assets/i18n';
+import { DemoNavigator } from '@src/core/navigation/routes/demo';
 
 const BottomTabNavigator: NavigationNavigator<
   any,
@@ -83,16 +84,16 @@ const AppNavigator: NavigationContainer = createStackNavigator(
   },
 );
 
-const createAppRouter = (container: any): NavigationContainer => {
+const createAppRouter = (): NavigationContainer => {
   return createAppContainer(
     createSwitchNavigator(
       {
         ['auth']: AuthNavigator,
-        ['app']: container,
+        ['app']: DemoNavigator,
       },
       { initialRouteName: 'auth' },
     ),
   );
 };
 
-export const Router: NavigationContainer = createAppRouter(AppNavigator);
+export const Router: NavigationContainer = createAppRouter();
